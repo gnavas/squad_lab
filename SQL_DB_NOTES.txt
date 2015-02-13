@@ -1,0 +1,95 @@
+Last login: Thu Feb 12 19:11:33 on ttys004
+psq%                                                                            ➜  ~  psql
+psql (9.4.1)
+Type "help" for help.
+
+georgenavas=# \list
+georgenavas=# \c sqauds_lab
+You are now connected to database "sqauds_lab" as user "georgenavas".
+sqauds_lab=# \dt
+No relations found.
+sqauds_lab=# CREATE TABLE squads (squad_id SERIAL PRIMARY KEY, squad_name TEXT, mascot TEXT);
+CREATE TABLE
+sqauds_lab=# CREATE TABLE students (student_id SERIAL PRIMARY KEY, squad_id INTEGER NOT NULL, name TEXT, age INTEGER, spirit_animal TEXT);
+CREATE TABLE
+sqauds_lab=# ALTER TABLE students ADD CONSTRAINT squad_fk FOREIGN KEY(squad_id) REFERENCES squads(squad_id) ON DELETE NO ACTION;
+ALTER TABLE
+sqauds_lab=# \dt
+            List of relations
+ Schema |   Name   | Type  |    Owner    
+--------+----------+-------+-------------
+ public | squads   | table | georgenavas
+ public | students | table | georgenavas
+(2 rows)
+
+sqauds_lab=# 
+sqauds_lab=# dt+
+sqauds_lab-# ;
+ERROR:  syntax error at or near "dt"
+LINE 1: dt+
+        ^
+sqauds_lab=# \dt+
+                         List of relations
+ Schema |   Name   | Type  |    Owner    |    Size    | Description 
+--------+----------+-------+-------------+------------+-------------
+ public | squads   | table | georgenavas | 8192 bytes | 
+ public | students | table | georgenavas | 8192 bytes | 
+(2 rows)
+
+sqauds_lab=# INSERT INTO squads (squad_name, mascot) VALUES ('Squad_1','Elephant');
+INSERT 0 1
+sqauds_lab=# INSERT INTO squads (squad_name, mascot) VALUES ('Squad_2','Mouse');
+INSERT 0 1
+sqauds_lab=# INSERT INTO squads (squad_name, mascot) VALUES ('Squad_3','Horse');
+INSERT 0 1
+sqauds_lab=# SELECT * FROM sqauds
+sqauds_lab-# ;
+ERROR:  relation "sqauds" does not exist
+LINE 1: SELECT * FROM sqauds
+                      ^
+sqauds_lab=# SELECT * FROM sqauds;                                                                                                                           ERROR:  relation "sqauds" does not exist
+LINE 1: SELECT * FROM sqauds;
+                      ^
+sqauds_lab=# SELECT * FROM squads;
+ squad_id | squad_name |  mascot  
+----------+------------+----------
+        1 | Squad_1    | Elephant
+        2 | Squad_2    | Mouse
+        3 | Squad_3    | Horse
+(3 rows)
+
+sqauds_lab=# INSERT INTO students (squad_id, name, age, spirit_animal) VALUES (1, 'George', 27, 'Wolverine');
+INSERT 0 1
+sqauds_lab=# INSERT INTO students (squad_id, name, age, spirit_animal) VALUES (1, 'Michelle', 28, 'Wildcat');
+INSERT 0 1
+sqauds_lab=# INSERT INTO students (squad_id, name, age, spirit_animal) VALUES (2, 'Nicole', 26, 'Irishman');
+INSERT 0 1
+sqauds_lab=# INSERT INTO students (squad_id, name, age, spirit_animal) VALUES (2, 'Michael', 26, 'Cardinal');
+INSERT 0 1
+sqauds_lab=# INSERT INTO students (squad_id, name, age, spirit_animal) VALUES (3, 'Elaine', 51, 'Puppy');
+INSERT 0 1
+sqauds_lab=# INSERT INTO students (squad_id, name, age, spirit_animal) VALUES (3, 'Jorge', 53, 'Irishman');
+INSERT 0 1
+sqauds_lab=# SELECT * FROM students;
+ student_id | squad_id |   name   | age | spirit_animal 
+------------+----------+----------+-----+---------------
+          1 |        1 | George   |  27 | Wolverine
+          2 |        1 | Michelle |  28 | Wildcat
+          3 |        2 | Nicole   |  26 | Irishman
+          4 |        2 | Michael  |  26 | Cardinal
+          5 |        3 | Elaine   |  51 | Puppy
+          6 |        3 | Jorge    |  53 | Irishman
+(6 rows)
+
+sqauds_lab=# SELECT * FROM squads JOIN students on squads.squad_id = students.squad_id;
+ squad_id | squad_name |  mascot  | student_id | squad_id |   name   | age | spirit_animal 
+----------+------------+----------+------------+----------+----------+-----+---------------
+        1 | Squad_1    | Elephant |          1 |        1 | George   |  27 | Wolverine
+        1 | Squad_1    | Elephant |          2 |        1 | Michelle |  28 | Wildcat
+        2 | Squad_2    | Mouse    |          3 |        2 | Nicole   |  26 | Irishman
+        2 | Squad_2    | Mouse    |          4 |        2 | Michael  |  26 | Cardinal
+        3 | Squad_3    | Horse    |          5 |        3 | Elaine   |  51 | Puppy
+        3 | Squad_3    | Horse    |          6 |        3 | Jorge    |  53 | Irishman
+(6 rows)
+
+sqauds_lab=# 
