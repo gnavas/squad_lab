@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Index</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+</head>
+<body>
+  <table class ="table">
+  <tr>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Spirit Animal</th>
+    <th>Get more info</th>
+  </tr>
+ 
+  <% @students.each do |x| %>
+  <tr>
+    <td><%= x["name"] %></td>
+    <td><%= x["age"] %></td>
+    <td><%= x["spirit_animal"] %></td>
+    <td> <form action='/squads/<%= x["squad_id"]%>/students/<%= x["student_id"]%>' method='get' >
+  <button type="submit" class="btn btn-default btn-xs"><%=x["name"]%>_Info</button>
+</form></td>
+  </tr>
+    <%end%>
+
+</table>
+<div>
+   <form action='/squads/new' method='get' >
+  <button type="submit" class="btn btn-default">Add Team</button>
+</form>
+</div>
+</body>
+</html>

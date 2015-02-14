@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Index</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+</head>
+<body>
+ <form action='/squads/new' method='get' >
+  <div class="form-group">
+    <label for="name">Squad Name</label>
+    <input type="text" class="form-control" id="name" value = <%= @tstudent["name"] %> autofocus>
+  </div>
+  <div class="form-group">
+    <label for="age">Mascot</label>
+    <input type="text" class="form-control" id="age" value = <%= @tstudent["age"] %> autofocus>
+  </div>
+    <div class="form-group">
+    <label for="mascot">Spirit Animal</label>
+    <input type="text" class="form-control" id="mascot" value = <%= @tstudent["spriit_animal"] %>>
+  </div>
+  <button type="submit" class="btn btn-default">Edit</button>
+</form>
+</body>
+</html>
