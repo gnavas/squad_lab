@@ -7,14 +7,14 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 </head>
 <body>
- <form action='/squads/new' method='get' >
+ <form action='/squads' method='post' >
   <div class="form-group">
     <label for="squadName">Squad Name</label>
-    <input type="text" class="form-control" id="squadName" placeholder="Squad_1" autofocus>
+    <input type="text" class="form-control" id="squadName" name ="name" placeholder="Squad_1" autofocus>
   </div>
   <div class="form-group">
     <label for="mascot">Mascot</label>
-    <input type="text" class="form-control" id="mascot" placeholder="Wolverine" autofocus>
+    <input type="text" class="form-control" id="mascot" name = "mascot" placeholder="Wolverine" autofocus>
   </div>
   <button type="submit" class="btn btn-default">Submit</button>
 </form>

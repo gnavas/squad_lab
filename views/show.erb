@@ -16,7 +16,10 @@
     <label for="mascot">Mascot</label>
     <input type="text" class="form-control" id="mascot" value = <%= @tsquad["mascot"] %> autofocus>
   </div>
-  <button type="submit" class="btn btn-default">Edit</button>
 </form>
+  <form action='/squads/<%= @tsquad["squad_id"] %>/students' method = "get">
+  <button type="submit" class="btn btn-default">Students</button>
+  </form>
+  </form>
 </body>
 </html>

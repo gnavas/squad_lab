@@ -23,6 +23,9 @@
     <td> <form action='/squads/<%= x["squad_id"] %>' method='get' >
   <button type="submit" class="btn btn-default btn-xs"><%=x["squad_name"]%>_Info</button>
 </form></td>
+  <td> <form action='/squads/<%= x["squad_id"] %>/edit' method='get' >
+  <button type="submit" class="btn btn-default btn-xs">Edit Squad</button>
+</form></td>
   </tr>
     <%end%>
 

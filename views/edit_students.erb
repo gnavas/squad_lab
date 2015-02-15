@@ -7,20 +7,18 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 </head>
 <body>
- <form action='/squads/new' method='get' >
+ <form action='/squads/<%=params[:squad_id]%>/students/<%= @tstudent["student_id"] %>' method='post' >
+ <input type="hidden" name="_method" value = "put">
   <div class="form-group">
     <label for="name">Name</label>
     <input type="text" class="form-control" id="name" name = "name" value = <%= @tstudent["name"] %> autofocus>
-  </div>
-  <div class="form-group">
     <label for="age">Age</label>
     <input type="text" class="form-control" id="age" name = "age" value = <%= @tstudent["age"] %> autofocus>
-  </div>
     <div class="form-group">
     <label for="spirit_animal">Spirit Animal</label>
     <input type="text" class="form-control" id="spirit_animal" name ="spirit_animal" value = <%= @tstudent["spirit_animal"] %>>
-  </div>
   <button type="submit" class="btn btn-default">Edit</button>
+  </div>
 </form>
 </body>
 </html>

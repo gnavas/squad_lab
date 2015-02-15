@@ -23,13 +23,16 @@
     <td> <form action='/squads/<%= x["squad_id"]%>/students/<%= x["student_id"]%>' method='get' >
   <button type="submit" class="btn btn-default btn-xs"><%=x["name"]%>_Info</button>
 </form></td>
+ <td> <form action='/squads/<%= x["squad_id"] %>/students/<%= x["student_id"] %>/edit' method='get' >
+  <button type="submit" class="btn btn-default btn-xs">Edit Student</button>
+</form></td>
   </tr>
     <%end%>
 
 </table>
 <div>
-   <form action='/squads/new' method='get' >
-  <button type="submit" class="btn btn-default">Add Team</button>
+   <form action='/squads/<%=params[:squad_id]%>/students/new' method='get' >
+  <button type="submit" class="btn btn-default">Add Student</button>
 </form>
 </div>
 </body>
