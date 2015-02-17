@@ -1,39 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Index</title>
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-</head>
+<%= erb :'/partials/_head' %>
 <body>
-  <table class ="table">
-  <tr>
-    <th>Name</th>
-    <th>Age</th>
-    <th>Spirit Animal</th>
-    <th>Get more info</th>
-  </tr>
- 
-  <% @students.each do |x| %>
-  <tr>
-    <td><%= x["name"] %></td>
-    <td><%= x["age"] %></td>
-    <td><%= x["spirit_animal"] %></td>
-    <td> <form action='/squads/<%= x["squad_id"]%>/students/<%= x["student_id"]%>' method='get' >
-  <button type="submit" class="btn btn-default btn-xs"><%=x["name"]%>_Info</button>
-</form></td>
- <td> <form action='/squads/<%= x["squad_id"] %>/students/<%= x["student_id"] %>/edit' method='get' >
-  <button type="submit" class="btn btn-default btn-xs">Edit Student</button>
-</form></td>
-  </tr>
-    <%end%>
+  <%= erb :'/partials/_navbar' %>
+  <h2 class = "text-center">Squad: <%= @team_name["squad_name"] %></h2>
+  <div class = "container-fluid">
+   <div class = "row">
+    <div class = " col-md-1 col-md-offset-1">
+        <form action='/squads/<%=params[:squad_id]%>/students/new' method='get' >
+          <button type="submit" class="btn btn-default">Add Student</button>
+        </form>
+      </div>
+      </div>
+      <br>
+    <div class = "row">
+      <div class = "col-md-10 col-md-offset-1">
+        <table class ="text-center table table-striped table-bordered">
+          <tr>
+            <th><p class="text-center">Name</p></th>
+            <th><p class="text-center">Age</p></th>
+            <th><p class="text-center">Spirit Animal</p></th>
+            <th><p class="text-center">Squad ID</p></th>
+            <th><p class="text-center">More Info</p></th>
+            <th><p class="text-center">Edit/Delete</p></th>
+            <th><p class="text-center">Squad Leader</p></th>
+          </tr>
 
-</table>
-<div>
-   <form action='/squads/<%=params[:squad_id]%>/students/new' method='get' >
-  <button type="submit" class="btn btn-default">Add Student</button>
-</form>
-</div>
+          <% @students.each do |x| %>
+          <tr>
+            <td><%= x["name"] %></td>
+            <td><%= x["age"] %></td>
+            <td><%= x["spirit_animal"] %></td>
+            <td><%= x["squad_id"] %></td>
+            <td> <p class = "text-center"><a href='/squads/<%= x["squad_id"]%>/students/<%= x["student_id"]%>'>More Info</a></p>
+            </td>
+            <td><p class = "text-center" ><a href='/squads/<%= x["squad_id"] %>/students/<%= x["student_id"] %>/edit'>Edit/Delete
+            </a></p></td>
+            <td>
+              <div class="checkbox" class= "checked">
+                <label>
+                  <input type="checkbox"> Squad Leader?
+                </label>
+              </div>
+            </td>
+          </tr>
+          <%end%>
+        </table>
+      </div>
+    </div>
+      <div class="row">
+      <div class = " col-md-1 col-md-offset-1">
+      <form action="/squads/<%=params[:squad_id]%>/students" method = "post">
+          <input type="hidden" name ="_method" value = "delete">
+          <button id = "delete_all" type="submit" class="btn btn-default">Delete All Students</button>
+        </form>
+        </div>
+    </div>
+  </div>
 </body>
+<%= erb :'/partials/_foot' %>
 </html>

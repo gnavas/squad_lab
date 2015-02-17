@@ -1,26 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Index</title>
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-</head>
+<%= erb :'/partials/_head' %> 
 <body>
- <form action='/squads/new' method='get' >
-  <div class="form-group">
-    <label for="name">Name</label>
-    <input type="text" class="form-control" id="name" name = "name" value = <%= @tstudent["name"] %> autofocus>
-  </div>
-  <div class="form-group">
-    <label for="age">Age</label>
-    <input type="text" class="form-control" id="age" name = "age" value = <%= @tstudent["age"] %> autofocus>
-  </div>
-    <div class="form-group">
-    <label for="spirit_animal">Spirit Animal</label>
-    <input type="text" class="form-control" id="spirit_animal" name ="spirit_animal" value = <%= @tstudent["spirit_animal"] %>>
-  </div>
-  <button type="submit" class="btn btn-default">Edit</button>
-</form>
+  <%= erb :'/partials/_navbar' %>
+  <div class = "contrainer-fluid">
+    <div class = "row">
+      <div class = "col-md-10 col-md-offset-1">
+        <table class =" text-center table table-striped table-bordered">
+          <tr>
+            <th><p class="text-center">Name</p></th>
+            <th><p class="text-center">Age</p></th>
+            <th><p class="text-center">Spirit Animal</p></th>
+            <th><p class="text-center">Squad</p></th>
+            <th><p class="text-center">Student ID</p></th>
+            <th><p class="text-center">Squad ID</p></th>
+          </tr>
+          <tr>
+            <td><%= @tstudent["name"] %></td>
+            <td><%= @tstudent["age"] %></td>
+            <td><%= @tstudent["spirit_animal"] %></td>
+             <td><%= @team_name["squad_name"] %></td>
+            <td><%= @tstudent["student_id"] %></td>
+            <td><%= @tstudent["squad_id"] %></td>
+          </tr>
+        </table>
+      </div>
+    </div> 
+    <div class = "row">
+      <div class="col-md-2 col-md-offset-6">
+       <form action="/squads/<%= @tstudent["squad_id"] %>/students/<%= @tstudent["student_id"] %>/edit" method='get' >
+       <button type="submit" class="btn btn-default">Edit Student</button>
+      </form>
+    </div>
+  </div> 
+</div>  
 </body>
+<%= erb :'/partials/_foot' %>
 </html>

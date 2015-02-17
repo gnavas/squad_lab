@@ -3,6 +3,7 @@
 <%= erb :'/partials/_head' %>
 <body>
 <%= erb :'/partials/_navbar' %>
+<h2 class="text-center">No students in squad. Please add student below. </h2>
  <form action='/squads/<%=@params[:squad_id]%>/students' method='post' >
   <div class="form-group">
     <label for="studentName">Name</label>

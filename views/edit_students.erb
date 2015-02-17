@@ -1,24 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Index</title>
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-</head>
+<%= erb :'/partials/_head' %>
 <body>
- <form action='/squads/<%=params[:squad_id]%>/students/<%= @tstudent["student_id"] %>' method='post' >
- <input type="hidden" name="_method" value = "put">
-  <div class="form-group">
-    <label for="name">Name</label>
-    <input type="text" class="form-control" id="name" name = "name" value = <%= @tstudent["name"] %> autofocus>
-    <label for="age">Age</label>
-    <input type="text" class="form-control" id="age" name = "age" value = <%= @tstudent["age"] %> autofocus>
-    <div class="form-group">
-    <label for="spirit_animal">Spirit Animal</label>
-    <input type="text" class="form-control" id="spirit_animal" name ="spirit_animal" value = <%= @tstudent["spirit_animal"] %>>
-  <button type="submit" class="btn btn-default">Edit</button>
-  </div>
-</form>
+  <%= erb :'/partials/_navbar' %>
+  <div class="container-fluid">
+    <div class="row">
+      <div class ="col-md-3 col-md-offset-4">
+        <form action='/squads/<%=params[:squad_id]%>/students/<%= @tstudent["student_id"] %>' method='post' >
+         <input type="hidden" name="_method" value = "put">
+         <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" name = "name" value = "<%= @tstudent["name"] %>" autofocus>
+          <label for="age">Age</label>
+          <input type="text" class="form-control" id="age" name = "age" value = "<%= @tstudent["age"] %>">
+          <div class="form-group">
+            <label for="spirit_animal">Spirit Animal</label>
+            <input type="text" class="form-control" id="spirit_animal" name ="spirit_animal" value = "<%= @tstudent["spirit_animal"] %>">
+            <br>
+          </div>
+        </div>
+        <div class = "row">    
+          <div class = "col-md-1 col-md-offset-4">
+          <button type="submit" class="btn btn-default">Edit Student</button>
+          </div>
+        </form>
+      </div>
+      <br>
+      <div class="row">
+        <div class = "col-md-1 col-md-offset-4">
+          <form action='/squads/<%=params[:squad_id]%>/students/<%= @tstudent["student_id"] %>' method='post' >
+           <input type="hidden" name="_method" value = "delete">
+           <div class="form-group">
+            <button type="submit" class="btn btn-default">Delete Student</button>
+          </div>
+        </form>
+      </div> 
+    </div> 
+  </div> 
 </body>
+<%= erb :'/partials/_foot' %>
 </html>

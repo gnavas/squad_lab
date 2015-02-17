@@ -1,19 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Index</title>
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-</head>
+<%= erb :'/partials/_head' %>
 <body>
-<form action='/squads/<%= @tsquad["squad_id"] %>' method = "post">
-  <input type="hidden" name = "_method" value= "put">
-    <label for="squadName">Squad Name</label>
-    <input type="text" class="form-control" id="squadName" name = "squad_name"value = <%= @tsquad["squad_name"] %> autofocus>
-    <label for="mascot">Mascot</label>
-    <input type="text" class="form-control" id="mascot" name = "mascot" value = <%= @tsquad["mascot"] %> autofocus>
-  <button type="submit" class="btn btn-default">Edit Squad</button>
-  </form>
+  <%= erb :'/partials/_navbar' %>
+  <div class="container-fluid">
+    <div class="row">
+      <div class ="col-md-3 col-md-offset-4">
+        <form action='/squads/<%= @tsquad["squad_id"] %>' method = "post">
+          <input type="hidden" name = "_method" value= "put">
+          <label for="squadName">Squad Name</label>
+          <p><input type="text" class="form-control" id="squadName" name = "squad_name"value = "<%= @tsquad["squad_name"]%>" autofocus></p>
+          <label for="mascot">Mascot</label>
+          <input type="text" class="form-control" id="mascot" name = "mascot" value = "<%= @tsquad["mascot"] %>" autofocus>
+          <br>
+        </div>
+      </div>
+      <div class = "row">    
+        <div class = "col-md-1 col-md-offset-5">
+          <button type="submit" class="btn btn-default">Edit Squad</button>
+        </div>
+      </form>
+    </div>
+    <br>
+    <div class="row">
+      <div class = "col-md-1 col-md-offset-5">
+        <form action='/squads/<%= @tsquad["squad_id"] %>' method = "post">
+          <input type="hidden" name = "_method" value= "delete">
+          <button type="submit" class="btn btn-default">Delete Squad</button>
+        </form>
+      </div> 
+    </div> 
+  </div> 
 </body>
+<%= erb :'/partials/_foot' %>
 </html>
