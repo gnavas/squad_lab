@@ -3,31 +3,31 @@
 <%= erb :'/partials/_head' %>
 <body>
   <%= erb :'/partials/_navbar' %>
-<div class = "contrainer-fluid">
-<div class = "row">
-  <div class = "col-md-10 col-md-offset-1">
-  <table class =" text-center table table-striped table-bordered">
-    <tr>
-      <th><p class="text-center">Squad name</p></th>
-      <th><p class="text-center">Mascot</p></th>
-      <th><p class="text-center">Squad ID</p></th>
-    </tr>
-    <tr>
-      <td><%= @tsquad["squad_name"] %></td>
-      <td><%= @tsquad["mascot"] %></td>
-      <td><%= @tsquad["squad_id"] %></td>
-    </tr>
-  </table>
-  </div>
-</div>  
-  <div class = "row">
-  <div class="col-md-2 col-md-offset-6">
-  <form action='/squads/<%= @tsquad["squad_id"] %>/students' method = "get">
-    <button type="submit" class="btn btn-default">Students</button>
-  </form>
-  </div>
-</div> 
-</div>  
+  <div class = "contrainer-fluid">
+    <div class = "row">
+      <div class = "col-md-10 col-md-offset-1">
+        <table class =" text-center table table-striped table-bordered">
+          <tr>
+            <th><p class="text-center">Squad name</p></th>
+            <th><p class="text-center">Mascot</p></th>
+            <th><p class="text-center">Squad ID</p></th>
+          </tr>
+          <tr>
+            <td><%= @tsquad["squad_name"] %></td>
+            <td><%= @tsquad["mascot"] %></td>
+            <td><%= @tsquad["squad_id"] %></td>
+          </tr>
+        </table>
+      </div>
+    </div>  
+    <div class = "row">
+    <div class="col-md-2 col-md-offset-6">
+        <form action='/squads/<%= @tsquad["squad_id"] %>/students' method = "get">
+          <button type="submit" class="btn btn-default">Students</button>
+        </form>
+      </div>
+    </div> 
+  </div>  
 </body>
 <%= erb :'/partials/_foot' %>
 </html>
